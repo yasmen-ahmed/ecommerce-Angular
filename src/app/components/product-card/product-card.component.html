@@ -1,0 +1,18 @@
+<div class="card w-100 h-100" style="width: 18rem;">
+    <img class="card-img-top w-100  " [src]="productItem.images[0]" alt="Card image cap">
+    <div class="card-body">
+      <span  [ngStyle]="{ color: (productItem.stock== 0) ? 'red' : 'green' }">{{productItem.stock | productStock }}</span>
+      <h5 class="card-title">{{productItem.title | uppercase}}</h5>
+      <span>{{productItem.price | currency}}</span>
+      <br>
+      <!-- <p class="card-text">{{productItem.description}}.</p> -->
+      <!-- <a (click)="showDetails(productItem.id)" class="btn btn-primary">More Details..</a> -->
+      <span> <b>Created in:</b>  {{productItem.createdAt | date :'MMMM YYYY'}}</span>
+      <br>
+<div class="d-flex justify-content-between m-3 ">
+  <a (click)="emitToParent(productItem.id)" class="btn btn-danger mr-3">More Details..</a>
+  <button class="btn btn-success" type="submit" (click)="addToCart(productItem);increaseCounter()" >Add To Cart</button>
+</div>
+    
+    </div>
+  </div>

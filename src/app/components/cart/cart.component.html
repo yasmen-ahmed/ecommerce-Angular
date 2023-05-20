@@ -1,0 +1,89 @@
+<!-- <h2>
+    counter
+</h2>
+
+<button class="btn btn-danger mx-3" (click)="decreseCounter()">-</button>
+
+<span>{{Counter}}</span>
+<button class="btn btn-success mx-3" (click)="increaseCounter()">+</button> -->
+
+
+<ng-container *ngIf="requestsCart.length !=0">
+
+<div class="container m-auto">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Product Id</th>
+                        <th>Title</th>
+                        <th>Product img</th>
+                        <th>Descraption</th>
+                        <th>price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                        <tr *ngFor="let productItem of requestsCart ;let i =index ">
+                            <td>{{i+1}}</td>
+                            <td>{{productItem.title}}</td>
+                            <td><img class="w-25 h-25" [src]="productItem.images[0]"/></td>
+                            <td>{{productItem.description}}</td>
+                            <td>{{productItem.price}}</td>
+                            <td>
+                                <button (click)="decreseCounter()">-</button>
+                                <span>{{Counter}}</span>
+                              <button  (click)="increaseCounter()">+</button> 
+
+                            </td>
+                            <td>{{productItem.Total}}</td>
+                            <td>
+                                <button (click)="removeCartItem(productItem)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="4"></td>
+                            <td style="width: 15%;"><button (click)="emptyCartItem()" class="btn btn-danger">Empty Cart</button></td>
+                            <td style="width: 15%;"><button routerLink="/" class="btn btn-primary">Shope More</button></td>
+                            <td style="width: 10%;"><button class="btn btn-success">Checkout</button></td>
+                                <td><strong>Grand Total : ${{grandTotal}}</strong></td>
+                        </tr>
+    
+                </tbody>
+    
+    
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+</ng-container>
+
+
+
+
+
+<ng-container *ngIf="requestsCart.length ==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">MY CART</h5>
+    
+        </div>
+        <div class="center">
+            <img class="w-50 h-50" src="../../../assets/emptyCart.png" alt="">
+            <h4>Your cart is empty!</h4>
+            <h6>Add item to it now</h6>
+            <button routerLink="/" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</ng-container>
+
+
